@@ -9,15 +9,17 @@ from kivy.clock import Clock
 
 class Game(BoxLayout):
 	def update(self,dt):
-		self.background.pos[0] -= 0.5
-		print(self.background.pos)
+		#self.background.pos[0] -= 0.5
+		self.background.x -= 0.5
+
 		if self.background.right<=0:
-			self.background.pos[0] = self.width
+			#self.background.pos[0] = self.width
+			self.background.x = self.width
 	
 class GameApp(App):
 	def build(self):
 		game = Game()
-		Clock.schedule_interval(game.update, 1/50)
+		Clock.schedule_interval(game.update, 1/110)
 		return game
 
 
