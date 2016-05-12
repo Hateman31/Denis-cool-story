@@ -4,14 +4,18 @@ kivy.require('1.9.1')
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.image import Image
+from kivy.core.window import Window
+from kivy.clock import Clock
 
-
-
-
-def main():
+class Game(BoxLayout):
+	pass
 	
-	return 0
+class GameApp(App):
+	def build(self):
+		game = Game()
+		return game
+
 
 if __name__ == '__main__':
-	main()
+	GameApp().run()
 
