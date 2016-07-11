@@ -9,7 +9,8 @@ from kivy.uix.widget import Widget
 from kivy.core.window import Window
 from kivy.clock import Clock
 
-class Game(FloatLayout):
+#~ class Game(FloatLayout):
+class Game(Widget):
 	def update(self,dt):
 		self.background.x -= 0.5
 
