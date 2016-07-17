@@ -9,6 +9,7 @@ class Player(Image):
 		]
 		box = Image(source = self.step[0])
 		self.size = box.texture_size
+		del box
 		self.new_step()
 		
 	def new_step(self):
