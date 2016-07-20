@@ -3,10 +3,8 @@
 	Image:
 		id: street
 		source:'images/street1.png'
-		allow_stretch: True
-		keep_ratio: True
 		canvas:
-			Clear
 			Rectangle:
-	            size: 1264,root.height
-	            source:'images/street1.png'
+	            size: self.texture_size[0],root.height
+	            pos: self.pos
+	            texture: self.texture

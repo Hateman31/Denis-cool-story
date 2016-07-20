@@ -13,13 +13,10 @@ from player import Player
 from talking import Talking
 
 class Game(Widget):
-	step = [
-		'atlas://images/player/step_1',
-		'atlas://images/player/step_2'
-		]
 	def __init__(self):
 		super(Game,self).__init__()
 		self.player = Player()
+		self.player.pos = 5,40
 		self.talking = Talking(self.player)
 		self.add_widget(self.talking)
 		self.add_widget(self.player)
@@ -64,7 +61,7 @@ class Game(Widget):
 			Translate(-fx, -fy)
 	
 	def on_touch_down(self,touch):
-		print(self.talking.pos)
+		self.talking.new_phrase()
 			
 class GameApp(App):
 	def build(self):
