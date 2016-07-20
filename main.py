@@ -10,6 +10,7 @@ from kivy.core.window import Window
 from kivy.clock import Clock
 from kivy.graphics import Translate, PushMatrix, PopMatrix
 from player import Player
+from talking import Talking
 
 class Game(Widget):
 	step = [
@@ -18,8 +19,9 @@ class Game(Widget):
 		]
 	def __init__(self):
 		super(Game,self).__init__()
-		#~ self.player = self.ids.player
 		self.player = Player()
+		self.talking = Talking(self.player)
+		self.add_widget(self.talking)
 		self.add_widget(self.player)
 		
 	def update(self,dt):
@@ -27,6 +29,7 @@ class Game(Widget):
 		#~ self.player.update(keyCode)
 		if self.player.right < 1264:
 			self.player.update()
+			self.talking.update(self.player)
 		self.set_focus(*self.player.center)
 		
 	def set_focus(self, x, y):
@@ -59,11 +62,14 @@ class Game(Widget):
 		self.canvas.before.clear()
 		with self.canvas.before:
 			Translate(-fx, -fy)
-
+	
+	def on_touch_down(self,touch):
+		print(self.talking.pos)
+			
 class GameApp(App):
 	def build(self):
 		game = Game()
-		Clock.schedule_interval(game.update, 1/25)
+		Clock.schedule_interval(game.update, 1/5)
 		return game
 
 
