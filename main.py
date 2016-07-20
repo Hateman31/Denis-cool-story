@@ -1,14 +1,15 @@
 import kivy
-kivy.require('1.9.0')
+kivy.require('1.9.1')
 
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.image import Image
 from kivy.uix.widget import Widget
-from kivy.core.window import Window
+#~ from kivy.core.window import Window
 from kivy.clock import Clock
 from kivy.graphics import Translate, PushMatrix, PopMatrix
+
 from player import Player
 from talking import Talking
 
@@ -61,7 +62,8 @@ class Game(Widget):
 			Translate(-fx, -fy)
 	
 	def on_touch_down(self,touch):
-		self.talking.new_phrase()
+		if touch.button =='left':
+			self.talking.hide()
 			
 class GameApp(App):
 	def build(self):

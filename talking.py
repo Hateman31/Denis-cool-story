@@ -33,8 +33,8 @@ class Talking(Widget):
 		self.count +=1
 		if self.count == 14:
 			self.show()
-			self.count = 4
-	
+			
+			
 	def show(self):
 		if self.phrase:
 			self.label.text = self.phrase.pop(0)
@@ -44,7 +44,6 @@ class Talking(Widget):
 	def hide(self):
 		self.remove_widget(self.shape)
 		self.remove_widget(self.label)
+		self.count = 4
 	
-	def new_phrase(self):
-		self.hide()
 		
