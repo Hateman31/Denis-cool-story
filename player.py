@@ -1,13 +1,8 @@
 from kivy.uix.image import Image
 
 class Player(Image):
-	def __init__(self,**kwargs):
-		super(Player,self).__init__()
-		#~ self.step = [
-		#~ 'atlas://images/player/step_1',
-		#~ 'atlas://images/player/step_2'
-		#~ ]
-		self.step = [
+		
+	step = [
 			'atlas://images/player/step_1',
 			'atlas://images/player/step_2',
 			'atlas://images/player/step_3',
@@ -15,9 +10,8 @@ class Player(Image):
 			'atlas://images/player/step_5',
 			'atlas://images/player/step_6'
 		]
-		#~ box = Image(source=self.step[0])
-		#~ self.size = box.texture_size
-		#~ del box
+	def __init__(self,**kwargs):
+		super(Player,self).__init__()
 		self.new_step()
 		
 	def new_step(self):

@@ -8,3 +8,13 @@
 	            size: self.texture_size[0],root.height
 	            pos: self.pos
 	            texture: self.texture
+	
+	Image:
+		id: street2
+		source:'images/street1.png'
+		canvas:
+			Clear
+			Rectangle:
+	            size: self.texture_size[0],root.height
+	            pos: street.right,self.y
+	            texture: self.texture
