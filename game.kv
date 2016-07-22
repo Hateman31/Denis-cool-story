@@ -1,20 +1,23 @@
+#:import vector kivy.vector.Vector
+
 <Game>:
 	street: street
+	street2: street2
+	
 	Image:
 		id: street
 		source:'images/street1.png'
-		canvas:
-			Rectangle:
-	            size: self.texture_size[0],root.height
-	            pos: self.pos
-	            texture: self.texture
+		size_hint:None,None
+		allow_stretch: True
+		scale: root.height/self.texture_size[1]
+		size: vector(self.texture_size)*self.scale
 	
 	Image:
 		id: street2
 		source:'images/street1.png'
-		canvas:
-			Clear
-			Rectangle:
-	            size: self.texture_size[0],root.height
-	            pos: street.right,self.y
-	            texture: self.texture
+		size_hint:None,None
+		allow_stretch: True
+		scale: root.height/self.texture_size[1]
+		size: vector(self.texture_size)*self.scale
+		x:street.right
+		

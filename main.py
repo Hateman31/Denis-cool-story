@@ -24,8 +24,8 @@ class Game(Widget):
 		
 	def update(self,dt):
 		
-		#~ if self.player.right < 1264:
-		if self.player.right < 1364:
+		if self.player.right < 1264:
+		#~ if self.player.right < 1364:
 			self.player.update()
 			self.talking.update(self.player)
 		self.set_focus(*self.player.center)
