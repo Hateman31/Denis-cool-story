@@ -17,17 +17,15 @@ from background import Background
 class Game(Widget):
 	def __init__(self):
 		super(Game,self).__init__()
-		self.player = Player()
-		self.player.pos = 5,40
+
+		start_xy = (5,40)
+		self.player = Player(pos = start_xy)
 		self.talking = Talking(self.player)
 		
-		#~ background = Background(
 		self.street1 = Background(
 			view_h= Window.height,
 			source = 'images/street1.png'
 			)
-		#~ self.street1 = background
-		#~ self.street2 = background
 		
 		self.street2 = Background(
 			view_h= Window.height,
@@ -35,11 +33,12 @@ class Game(Widget):
 			x = self.street1.right			
 			)
 			
-		#~ self.street2.x = self.street1.right
 		self.add_widget(self.street1)
 		self.add_widget(self.street2)
 		self.add_widget(self.talking)
 		self.add_widget(self.player)
+		
+		#~ self.current = 
 		
 	def update(self,dt):
 		

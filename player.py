@@ -11,7 +11,7 @@ class Player(Image):
 			'atlas://images/player/step_6'
 		]
 	def __init__(self,**kwargs):
-		super(Player,self).__init__()
+		super(Player,self).__init__(**kwargs)
 		self.new_step()
 		
 	def new_step(self):
