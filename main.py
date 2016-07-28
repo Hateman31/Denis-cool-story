@@ -12,6 +12,7 @@ from kivy.graphics import Translate, PushMatrix, PopMatrix
 
 from player import Player
 from talking import Talking
+from background import Background
 
 class Game(Widget):
 	def __init__(self):
@@ -19,9 +20,26 @@ class Game(Widget):
 		self.player = Player()
 		self.player.pos = 5,40
 		self.talking = Talking(self.player)
+		
+		#~ background = Background(
+		self.street1 = Background(
+			view_h= Window.height,
+			source = 'images/street1.png'
+			)
+		#~ self.street1 = background
+		#~ self.street2 = background
+		
+		self.street2 = Background(
+			view_h= Window.height,
+			source = 'images/street1.png',
+			x = self.street1.right			
+			)
+			
+		#~ self.street2.x = self.street1.right
+		self.add_widget(self.street1)
+		self.add_widget(self.street2)
 		self.add_widget(self.talking)
 		self.add_widget(self.player)
-		#~ self.street2.x = self.street.right
 		
 	def update(self,dt):
 		
@@ -29,8 +47,8 @@ class Game(Widget):
 		if 1:
 			self.player.update()
 			self.talking.update(self.player)
-			if self.player.x>self.street2.x:
-				self.street.x += self.street.width*2
+			#~ if self.player.x>self.street2.x:
+				#~ self.street.x += self.street.width*2
 		self.set_focus(*self.player.center)
 		
 	def set_focus(self, x, y):
