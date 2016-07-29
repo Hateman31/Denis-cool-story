@@ -38,8 +38,8 @@ class Talking(Widget):
 	def show(self):
 		if self.phrase:
 			self.label.text = self.phrase.pop(0)
-		self.add_widget(self.shape)
-		self.add_widget(self.label)
+			self.add_widget(self.shape)
+			self.add_widget(self.label)
 	
 	def hide(self):
 		self.remove_widget(self.shape)
