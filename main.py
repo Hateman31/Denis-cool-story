@@ -19,6 +19,11 @@ class Game(Widget):
 		self.player = Player(pos = start_xy)
 		self.talking = Talking(self.player)
 		
+		self.lane = Background(
+			view_h= Window.height,
+			source = 'images/lane.png'
+		)
+		
 		self.street1 = Background(
 			view_h= Window.height,
 			source = 'images/street1.png'
@@ -36,32 +41,35 @@ class Game(Widget):
 		self.add_widget(self.player)
 		
 		self.stopline = self.street1.right
+		self.lane_status = 0
 		
 	def update(self,dt):
 		
-		if self.player.right < self.stopline:
-			self.player.update()
-			self.talking.update(self.player)
-		
 		if self.talking.phrase:
-
 			delta = Window.width//2			
 			delta += self.player.right
 			
-			#~ frame's right board == camera right board
+			#~ frame's right side == camera right side
 			if delta >= self.street1.right:
 				self.street2.x = self.street1.right
 				self.stopline = self.street2.right
-			else:
-				self.stopline = self.street1.right
 				
-			#~ frame's right board == camera right board
+			#~ frame's right side == camera right side
 			if delta >= self.street2.right:
 				self.street1.x = self.street2.right
 				self.stopline = self.street1.right
-			else:
-				self.stopline = self.street2.right
+
+		else:
+			if not self.lane_status:
+				self.lane.x = self.stopline
+				self.add_widget(self.lane,index = 2)
+				self.lane_status = 1
+				self.stopline = self.lane.right
 			
+		if self.player.right < self.stopline:
+			self.player.update()
+			self.talking.update(self.player)
+
 		self.set_focus(*self.player.center)
 		
 	def set_focus(self, x, y):

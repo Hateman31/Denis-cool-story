@@ -22,7 +22,6 @@ class Talking(Widget):
 		#~ create text
 		with open('speech.txt') as f:
 			self.phrase = f.readlines()
-		self.label.text = self.phrase.pop(0)
 		
 		self.count = 0
 
