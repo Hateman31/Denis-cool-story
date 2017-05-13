@@ -17,6 +17,8 @@ class Game(Widget):
 
 		start_xy = (5,40)
 		self.player = Player(pos = start_xy)
+		self.enenmy = Player(source = '')
+		self.enemy_stay = 0
 		self.talking = Talking(self.player)
 		
 		self.lane = Background(
@@ -66,9 +68,10 @@ class Game(Widget):
 				self.lane_status = 1
 				self.stopline = self.lane.right
 			
-		if self.player.right < self.stopline:
-			self.player.update()
-			self.talking.update(self.player)
+		if not self.enemy_stay:
+			if self.player.right < self.stopline:
+				self.player.update()
+				self.talking.update(self.player)
 
 		self.set_focus(*self.player.center)
 		
